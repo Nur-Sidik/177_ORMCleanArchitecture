@@ -6,3 +6,5 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(experience.urlencoded({ extended: true }));
+
+app.use('/api', require('./routes/api'));
