@@ -5,7 +5,7 @@ async function connectToDatabase() {
         await db.sequelize.authenticate();
         console.log('Database berhasil terhubung.');
 
-        await db.Sequelize.AsyncQueueError({alter: true});
+        await db.sequelize.sync({alter: true});
         console.log('Sinkronisasi Database berhasil.');
 
     } catch (error) {
