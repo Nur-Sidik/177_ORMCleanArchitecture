@@ -24,3 +24,14 @@ async function getKomikById(req, res) {
     }
 
 }
+
+async function createKomik(req, res) {
+    const { title, description, author } = req.body;
+    try {
+        const newKomik = await db.komik.create({ title, description, author });
+        res.status(201).json(newKomik);
+    } catch (error) {
+        console.error('Terjadi kesalahan saat membuat data komik yang baru.', error.message);
+        res.status(500).json({ error: 'Terjadi kesalahan saat membuat data komik yang baru.' });
+    }
+}
