@@ -69,3 +69,11 @@ async function deleteKomik(req, res) {
         res.status(500).json({ error: 'Terjadi kesalahan saat menghapus data komik.' });
     }
 }
+
+module.exports = {
+    getAllKomik,
+    getKomikById,
+    createKomik,
+    updateKomik,
+    deleteKomik
+};
