@@ -54,3 +54,18 @@ async function updateKomik(req, res) {
         res.status(500).json({ error: 'Terjadi kesalahan saat memperbarui data komik.' });
     }
 }
+
+async function deleteKomik(req, res) {
+    const { id } = req.params;
+    try {
+        const komik = await db.komik.findByPk(id);
+        if (!komik) {
+            return res.status(404).json({ error: 'Komik tidak ditemukan.' });
+        }
+        await komik.destroy();
+        res.status(200).json({ message: 'Komik berhasil dihapus.' });
+    } catch (error) {
+        console.error('Terjadi kesalahan saat menghapus data komik.', error.message);
+        res.status(500).json({ error: 'Terjadi kesalahan saat menghapus data komik.' });
+    }
+}
